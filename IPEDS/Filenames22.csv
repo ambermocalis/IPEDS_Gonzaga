@@ -1,0 +1,77 @@
+surveyNumber,OrderInSurvey,FileNumber,fileName,tableTitle,multiRecord,qualifyingField1,searchable,qualifyingField2,defaultValue1,defaultValue2,q1type,q2type,qualifyingField3,defaultValue3,q3type,permitLevel,caveat,showCodeValue1,showCodeValue2,showCodeValue3
+1,1,1,"Directory","Directory information, institution classifications, and response status information",0,,"Y",,,,,,,,,1,,,,
+1,2,2,"ICData","Veteran and student services, special learning opportunities, distance education, and disability",0,,"Y",,,,,,,,,1,,,,
+3,6,3,"C_HD","Response status",0,,"Y",,,,,,,,,1,,,,
+3,2,4,"Comp_A","Awards/degrees conferred by program (CIP), award level, race/ethnicity, and gender: July 1, 2021 to June 30, 2022",3,"CIPCODE","Y","AWLEVEL","99","5","A","N","MAJORNUM","1","N",1,,1,0,0
+1,3,5,"StudentCharges","Student charges",0,,"Y",,,,,,,,,1,,,,
+2,20,6,"EF_HD","Response status - Fall enrollment",0,,"Y",,,,,,,,,1,,,,
+2,4,7,"EF_A","Race/ethnicity, gender, attendance status, and level of student:  Fall 2022",1,"EFALEVEL","Y",,"1",,"N",,,,,1,,0,,
+2,5,8,"EF_CP","Major field of study, race/ethnicity, gender, attendance status, and level of student: Fall 2022",1,"EFCIPLEV","Y",,"101",,"N",,,,,1,,0,,
+2,6,9,"EF_B","Age category, gender, attendance status, and level  of student:  Fall 2022",2,"LSTUDY","Y","EFBAGE","1","1","N","N",,,,1,,0,0,
+2,7,10,"EF_C","Residence and migration of first-time freshman:  Fall 2022",1,"EFCSTATE","Y",,"99",,"N",,,,,1,,0,,
+2,8,11,"EF_D","Total entering class:  Fall 2022",0,,"Y",,,,,,,,,1,,,,
+14,16,12,"EFFY","12-month unduplicated headcount by race/ethnicity, gender and level of student: 2021-22",1,"EFFYALEV","Y",,"1",,"N",,,,,1,,0,,
+14,18,13,"EFIA","12-month instructional activity: 2021-22",0,,"Y",,,,,,,,,1,,,,
+14,19,14,"EFFYDIST","12-month unduplicated headcount by distance education status and student level: 2021-22",1,"EFFYDLEV","Y",,"1",,"N",,,,,1,,,,
+4,5,15,"SAL_HD","Response status ",0,,"Y",,,,,,,,,1,,0,,
+4,2,16,"SAL_IS","Number and salary outlays for full-time nonmedical instructional staff, by  gender, and academic rank:  Academic year 2022-23",1,"ARANK","Y",,"7",,"N",,,,,1,,0,0,
+4,4,17,"SAL_NIS","Number and salary outlays for full-time nonmedical  noninstructional staff by occupation: Academic year 2022-23",0,,"Y",,,,,,,,,1,,0,0,
+5,8,18,"S_HD","Response status",0,,"Y",,,,,,,,,1,,0,,
+5,2,19,"S_OC","Number of staff by occupational category, race/ethnicity, and gender:  Fall 2022",1,"STAFFCAT","Y",,"1100",,"N",,,,,1,,0,,
+5,5,20,"S_IS","Full-time instructional staff, by faculty and tenure status, academic rank, race/ethnicity, and gender: Fall 2022",1,"SISCAT","Y",,"1",,"N",,,,,1,,0,,
+5,6,21,"S_NH","New hires by occupational category, race/ethnicity, and gender (Degree-granting institutions):  Fall 2022",1,"SNHCAT","Y",,"13",,"N",,,,,1,,0,,
+5,4,22,"S_SIS","Full-time instructional staff, by faculty and tenure status, and academic rank: Fall 2022",1,"FACSTAT","Y",,"0",,"N",,,,,1,,,,
+11,3,23,"EAPHD","Response status",0,,"Y",,,,,,,,,1,,,,
+11,2,24,"EAP","Number of staff by occupation, faculty and tenure status:  Fall 2022",1,"EAPCAT","Y",,"10000",,"N",,,,,1,,0,,
+2,9,25,"EF_D1","Retention rates for the 2021 cohort, by attendance status:  Fall 2022",0,,"Y",,,,,,,,,1,,,,
+6,8,26,"F_HD","Response status for all institutions",0,,"Y",,,,,,,,,1,,0,0,0
+6,6,28,"F_FASB","Private not-for-profit institutions or Public institutions using FASB:  Fiscal year 2022",0,,"Y",,,,,,,,,1,,0,0,0
+6,7,29,"F_F3","Private for-profit institutions:  Fiscal year 2022",0,,"Y",,,,,,,,,1,,0,0,0
+6,3,35,"F_GASB","Public institutions - GASB 34/35:  Fiscal year 2022",0,,"Y",,,,,,,,,1,,0,0,0
+7,6,38,"SFAHD","Response status  ",0,,"Y",,,,,,,,,1,,0,0,0
+7,1,39,"SFA","Financial aid for all undergraduates and full-time, first-time, degree/certificate-seeking undergraduate students, 2021-22",0,,"Y",,,,,,,,,1,,0,0,0
+8,5,40,"GR200","Graduation rate data, 200% of normal time to complete - cohort year 2014 (4-year) and cohort year 2018 (less-than-4-year)  institutions",0,,"Y",,,,,,,,,1,,,,
+8,7,41,"GRHD","Response status ",0,,"Y",,,,,,,,,1,,0,0,0
+8,2,42,"GR4YR2YR","Graduation rate data, 150% of normal time to complete  - cohort year 2016 (4-year) and cohort year 2019 (2-year)  institutions",1,"GRTYPE","Y",,"1",,"N",,,,,1,,0,,
+8,3,45,"GRL2","Graduation rate data, 150% of normal time to complete -  cohort year 2019 (less-than-2-year institutions)",0,,"Y",,,,,,,,,1,,0,0,0
+18,3,47,"OMHD","Response status - Outcome measures",0,,"Y",,,,,,,,,1,,,,
+18,2,48,"OM","Award and enrollment data of entering degree/certificate-seeking undergraduate cohorts from 2014-15 at degree-granting institutions, by Pell status",1,"OMCHRT","Y",,"1",,"N",,,,,1,,0,,
+10,2,49,"FREQ_IC_ADM","Selectivity and admissions yield",0,,"Y",,,,,,,,,1,,,,
+10,3,50,"FREQ_IC_COST","Total cost of attendance",0,,"Y",,,,,,,,,1,,,,
+10,1,51,"Freq_IC","Institutions",0,,"Y",,,,,,,,,1,,,,
+10,6,53,"Freq_EF_Fall","Enrollment and retention rates: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+10,7,54,"Freq_EF_12MN","12-month enrollment: 2021-22",0,,"Y",,,,,,,,,1,,,,
+10,9,55,"FREQ_C","Degrees/awards: July 1, 2021 to June 30, 2022",0,,"Y",,,,,,,,,1,,,,
+10,10,56,"Freq_GR","Graduation rates",0,,"Y",,,,,,,,,1,,,,
+10,4,57,"FREQ_SFA","Student financial aid of full-time first-time degree or certificate-seeking undergraduate students: 2021-22",0,,"Y",,,,,,,,,1,,,,
+10,12,58,"FREQ10_F","Revenues and expenditures: Fiscal year 2022",0,,"Y",,,,,,,,,1,,,,
+10,13,59,"FREQ_HR","Average salaries and full-time equivalent staff: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+2,1,61,"EFFREQfall","Frequently used enrollment variables: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+14,2,62,"EFFREQ12MN","Frequently used enrollment variables: 2021-22",0,,"Y",,,,,,,,,1,,,,
+3,1,63,"CFREQ","Total awards/degrees and number of students receiving awards/degrees  by award level: July 1, 2021 to June 30, 2022",0,,"Y",,,,,,,,,1,,,,
+8,1,64,"GRFREQ","Frequently used graduation rates",0,,"Y",,,,,,,,,1,,,,
+6,1,65,"FFREQ","Frequently used financial indicators for all institutions: Fiscal year 2022",0,,"Y",,,,,,,,,1,,0,0,0
+4,1,66,"SAFREQ","Average salaries for full-time nonmedical instructional staff equated to 9-month contracts: Academic year 2022-23",0,,"Y",,,,,,,,,1,,,,
+11,1,67,"EAPFREQ","Full-time equivalent staff by occupational category: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+5,1,68,"SFREQ","Full-time equivalent staff by occupational category: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+14,21,73,"E12_HD","Response status - 12-month enrollment",0,,"Y",,,,,,,,,1,,,,
+2,3,74,"EF_Atotals","Gender, attendance status, and level of student:  Fall 2022",1,"EFLEVEL","Y",,"10",,"N",,,,,1,,0,,
+2,10,75,"EF_F","Student-to-faculty ratio: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+2,12,76,"EFDisab","Undergraduate students from fall 2021 with disabilities: Fall 2022",0,,"Y",,,,,,,,,1,,,,
+7,2,77,"NetPrice","Average net price for full-time, first-time degree/certificate-seeking undergraduate students, 2019-20 to 2021-22",0,,"Y",,,,,,,,,1,,0,0,0
+7,3,78,"NetPricePub","Full-time, first-time degree/certificate-seeking undergraduate students paying the in-state or in-district tuition rate by living arrangement in public institutions, 2019-20 to 2021-22",0,,"Y",,,,,,,,,1,,0,0,0
+7,4,79,"NetPricePrV","Full-time, first-time degree/certificate-seeking undergraduate students by living arrangement in private not-for-profit and for-profit institutions, 2019-20 to 2021-22",0,,"Y",,,,,,,,,1,,0,0,0
+3,3,80,"Comp_B","Number of students receiving awards/degrees, by race/ethnicity and gender: July 1, 2021 to June 30, 2022",0,,"Y",,,,,,,,,1,,,,
+3,4,81,"Comp_C","Number of students receiving awards/degrees, by award level and by gender, race/ethnicity and age categories: July 1, 2021 to June 30, 2022",1,"AWLEVELC","Y",,"5",,"N",,,,,1,,0,,
+2,11,82,"EF_DistEd","Distance education status and level of student : Fall 2022",1,"EFDELEV","Y",,"1",,"N",,,,,1,,,,
+3,5,83,"C_DE","Number of programs offered and number of programs offered via distance education, by award level: July 1, 2021 to June 30, 2022",1,"CIPCODE","Y",,"99",,"A",,,,,1,,1,,
+10,5,84,"Freq_Netprice","Net price: 2021-22",0,,"Y",,,,,,,,,1,,,,
+12,1,85,"Admissions","Admission considerations, applications, admissions, enrollees and test scores",0,,"Y",,,,,,,,,1,,0,0,0
+7,5,86,"SFAVB","Military Servicemembers and Veteran's Benefits, 2021-22",0,,"Y",,,,,,,,,1,,0,0,0
+16,1,87,"ACLIBRARY","Academic Libraries: Fiscal year 2022",0,,"Y",,,,,,,,,1,,0,0,0
+10,14,88,"FREQ_AL","Academic library indicators: Fiscal year 2022",0,,"Y",,,,,,,,,1,,,,
+8,4,89,"GRPELLSSL","Graduation rate data for Pell Grant and Direct Subsidized Loan recipients , 150% of normal time to complete  - cohort year 2016 (4-year) and cohort year 2019 (2-year)  institutions",1,"PSGRTYPE","Y",,"1",,"N",,,,,1,,0,,
+10,11,90,"FREQ_OM","Outcome measure rates ",0,,"Y",,,,,,,,,1,,,,
+1,5,91,"CustomCG","Custom comparison group submitted by institution: 2023 Data Feedback Report",0,,"Y",,,,,,,,,1,,,,
+1,4,92,"ICDATAPC","Branch campus locations displayed in College Navigator",0,,"Y",,,,,,,,,1,,,,
+8,6,93,"GRGENDER","Gender unknown reported in revised cohorts  - cohort year 2016 (4-year) and cohort year 2019 (less-than-4-year)  institutions",1,"GRCHRTYR","Y",,"1",,"N",,,,,1,,0,,

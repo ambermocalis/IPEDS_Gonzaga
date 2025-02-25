@@ -1,0 +1,119 @@
+
+// 2022 IPEDS Data ETL only:
+source: DRVIC is duckdb.table("./IPEDS/DRVIC2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: EF is duckdb.table("./IPEDS/EF2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: EFD is duckdb.table("./IPEDS/EF2022D.csv") extend {
+    primary_key: UNITID
+}
+
+source: GR is duckdb.table("./IPEDS/GR2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: HD is duckdb.table("./IPEDS/HD2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: HDd is duckdb.sql("""
+   SELECT * FROM read_csv('./IPEDS/HD*.csv',
+       union_by_name=true
+    )
+ """) extend {
+ }
+
+source: ICAY is duckdb.table("./IPEDS/IC2022_AY.csv") extend {
+    primary_key: UNITID
+}
+
+--source: ICMission is duckdb.table("./IPEDS/IC2022Mission.csv")
+
+source: SFA is duckdb.table("./IPEDS/SFA2122_P1.csv") extend {
+    primary_key: UNITID
+}
+
+source: SFA_2 is duckdb.table("./IPEDS/SFA2122_P2.csv") extend {
+    primary_key: UNITID
+} // contains grants, scholarships, net price, etc. by income level
+
+source: IC is duckdb.table("./IPEDS/IC2022.csv") extend {
+    primary_key: UNITID
+
+    join_one: DRVIC with UNITID
+    join_one: EF with UNITID
+    join_one: EFD with UNITID
+    join_one: GR with UNITID
+    join_one: HD with UNITID
+    join_one: ICAY with UNITID
+    join_one: SFA with UNITID
+    join_one: SFA_2 with UNITID
+        
+    measure: 
+        // Count measures
+        `Institution Count` is count()
+
+        // Enrollment measures
+        `Enrollment Total` is sum(EF.EFTOTAL) {where: EF.EFLEVEL = 10}
+        `Undergrad Enrollment Total` is sum(EF.EFTOTAL) {where: EF.EFLEVEL = 20 | 30 | 31 | 40 | 34 | 36 | 35}
+        `Graduate Lvl Enrollment Total` is sum(EF.EFTOTAL) {where: EF.EFLEVEL = 50}
+        `Avg Enrollment` is avg(EF.EFTOTAL) {where: EF.EFLEVEL = 10}
+        `Avg Undergrad Enrollment` is avg(EF.EFTOTAL) {where: EF.EFLEVEL = 20 | 30 | 31 | 40 | 34 | 36 | 35}
+        `Avg Graduate Lvl Enrollment` is avg(EF.EFTOTAL) {where: EF.EFLEVEL = 50}
+
+        // Retention measures
+        `FT Retention Rate` is max(EFD.RET_PCF)/100
+        `PT Retention Rate` is max(EFD.RET_PCP)/100
+
+        // Graduation Rate measures
+        `Graduation Rate` is avg(GR.CHRTSTAT)/100
+        `Graduation Total from Cohort` is avg(GR.GRTOTLT)
+}
+
+source: FinAid is duckdb.table("./IPEDS/SFA2122_P2.csv") extend {
+    primary_key: UNITID
+
+    join_one: DRVIC with UNITID
+    join_one: EF with UNITID
+    join_one: EFD with UNITID
+    join_one: GR with UNITID
+    join_one: HD with UNITID
+    join_one: IC with UNITID
+    join_one: ICAY with UNITID
+    join_one: SFA with UNITID
+
+    rename:
+        `Financial Aid Cohort as Percent of All Undergraduates` is SCUGFFP
+        `Avg Net Price-FinAid Students, 2021-22` is NPIST2
+        `Avg Net Price-FinAid Students, 2020-21` is NPIST1
+        `Avg Net Price-FinAid Students, 2019-20` is NPIST0
+
+        `Total grant/scholarship awarded, all income levels` is GRN4T2
+        `Avg grant/scholarship awarded, all income levels` is GRN4A2
+        `Avg grant/scholarship awarded, income level (0-30,000)` is GRN4A12
+        `Avg grant/scholarship awarded, income level (30,001-48,000)` is GRN4A22
+        `Avg grant/scholarship awarded, income level (48,001-75,000)` is GRN4A32
+        `Avg grant/scholarship awarded, income level (75,001-110,000)` is GRN4A42
+        `Avg grant/scholarship awarded, income level (110,001 or more)` is GRN4A52
+
+        `Total grant/scholarship awarded (paying in-state tuition rate), all income levels` is GIS4T2
+        `Avg grant/scholarship awarded (paying in-state tuition rate), all income levels` is GIS4A2
+        `Avg grant/scholarship awarded (paying in-state tuition rate), income level (0-30,000)` is GIS4A12
+        `Avg grant/scholarship awarded (paying in-state tuition rate), income level (30,001-48,000)` is GIS4A22
+        `Avg grant/scholarship awarded (paying in-state tuition rate), income level (48,001-75,000)` is GIS4A32
+        `Avg grant/scholarship awarded (paying in-state tuition rate), income level (75,001-110,000)` is GIS4A42
+        `Avg grant/scholarship awarded (paying in-state tuition rate), income level (110,001 or more)` is GIS4A52
+}
+
+// test source extraction & transformation
+run: IC -> {
+    select: EFD.RET_PCF, HD.INSTNM
+    where: EF.EFLEVEL = 20 // level 20 is for undergraduate enrollment count
+    order_by: RET_PCF desc
+    --where: HD.INSTNM like 'Gonzaga%'
+    
+}

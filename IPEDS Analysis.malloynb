@@ -1,0 +1,92 @@
+>>>markdown
+## IPEDS
+
+**Research Question Ideas**
+(from Prof. Olsen)
+How do schools in the WCC compare to schools in the Pac-12 by: 
+- student body size
+- retention rates
+- graduation rates
+- endowment
+- others?
+
+How has graduate student enrollment changed in Washington State schools
+- total enrollment
+- by sector (public vs. private, for-profit vs. non-profit)?
+- gender
+- race/ethnicity 
+
+Using factor analysis, which schools closely match Gonzaga on enrollment and budget?
+
+(from ChatGPT)
+What are the post-graduate outcomes?
+- median salary of graduates from different programs within five years of graduation?
+
+How do athletic scholarship expenditures compare between Pac-12 & WCC schools?
+
+Can I get a 3 year trend? Data I have:
+- IPEDS 2022-23 (from prof)
+- IPEDS 2021-22 (from prof)
+- IPEDS 2020-21 (using PowerQuery/Access to convert to .csv?)
+- IPEDS 2019-20 (using PowerQuery/Access to convert to .csv?)
+>>>malloy
+import 'IPEDS Data ETL.malloy'
+>>>markdown
+#### Things to note:
+
+##### Pac-12 v WCC
+**Pacific-12 Conference = 127** in IC Table, CONFNO* dimension (1-4, NCAA/NAIA Conf # for football, basketball, baseball, xc, respectively) 
+
+**West Coast Conference = 136** in IC Table, CONFNO* dimension (1-4, NCAA/NAIA Conf # for football, basketball, baseball, xc, respectively) 
+
+>>>markdown
+-------
+
+#### Pac-12 & WCC participating institutions:
+>>>malloy
+run: IC -> {
+  where:
+    CONFNO2 = 136 | 127,
+    ICAY.CHG2AY3 != null
+  group_by: CONFNO2
+  aggregate: `Institution Count`
+  nest: `Conference Institutions` is {
+    where: ICAY.CHG2AY3 != null
+    group_by: HD.INSTNM
+  }
+}
+>>>markdown
+#### Conference Institutions Characteristic Comparisons:
+>>>malloy
+// using select statement in nest
+run: IC -> {
+  where:
+    CONFNO2 = 136 | 127,
+    ICAY.CHG2AY3 != null
+  group_by: CONFNO2
+  nest: `Conference Institutions` is {
+    select: HD.INSTNM--, `Published T&F` is ICAY.CHG1AY3, `Undergrad Enrollment` is EF.EFTOTAL, `Retention Rate` is EFD.RET_PCF
+    --order_by: INSTNM asc
+  }
+}
+>>>malloy
+run: IC -> {
+  where:
+    CONFNO2 = 136 | 127,
+    --ICAY.CHG2AY3 != null
+  group_by: CONFNO2
+  nest: `Conference Institutions` is {
+    where: ICAY.CHG2AY3 != null
+    group_by: HD.INSTNM
+    aggregate: # currency
+      `Published T&F` is ICAY.CHG1AY3.avg()
+      # number="0"
+      `Avg Undergrad Enrollment`
+      # number="0\%"
+      `Rentention Rate` is `FT Retention Rate`
+      # number="0\%"
+      `Graduation Rate`
+    order_by: INSTNM asc
+  }
+}
+>>>malloy

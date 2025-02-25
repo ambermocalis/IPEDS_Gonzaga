@@ -1,0 +1,51 @@
+
+
+source: ICAY is duckdb.table("IC202*_AY.csv") extend {
+    primary_key: UNITID
+}
+
+source: HD is duckdb.table("HD2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: HDd is duckdb.sql("""
+   SELECT * FROM read_csv('HD*.csv',
+       union_by_name=true
+   )
+""") extend {
+}
+
+source: ICMission is duckdb.table("IC202*Mission.csv")
+
+source: EFD is duckdb.table("EF202*D.csv") extend {
+    primary_key: UNITID
+}
+
+source: EF is duckdb.table("EF2022.csv") extend {
+    primary_key: UNITID
+}
+
+source: SFA is duckdb.table("SFA2122_P1.csv") extend {
+    primary_key: UNITID
+}
+
+source: DRVIC is duckdb.table("DRVIC202*.csv") extend {
+    primary_key: UNITID
+}
+
+source: IC is duckdb.table("IC2022.csv") extend {
+    primary_key: UNITID
+    join_one: ICAY with UNITID
+    join_one: HD with UNITID
+    join_one: EFD with UNITID
+    join_one: EF with UNITID
+    join_one: SFA with UNITID
+    join_one: DRVIC with UNITID
+}
+
+run: IC -> {
+    select: EFD.RET_PCF, HD.INSTNM
+    where: EF.EFLEVEL = 20
+    order_by: RET_PCF desc
+    --whe:
+}
