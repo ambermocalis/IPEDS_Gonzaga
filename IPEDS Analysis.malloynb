@@ -38,7 +38,6 @@ import 'IPEDS Data ETL.malloy'
 **Pacific-12 Conference = 127** in IC Table, CONFNO* dimension (1-4, NCAA/NAIA Conf # for football, basketball, baseball, xc, respectively) 
 
 **West Coast Conference = 136** in IC Table, CONFNO* dimension (1-4, NCAA/NAIA Conf # for football, basketball, baseball, xc, respectively) 
-
 >>>markdown
 -------
 
@@ -46,8 +45,7 @@ import 'IPEDS Data ETL.malloy'
 >>>malloy
 run: IC -> {
   where:
-    CONFNO2 = 136 | 127,
-    ICAY.CHG2AY3 != null
+    CONFNO2 = 136 | 127
   group_by: CONFNO2
   aggregate: `Institution Count`
   nest: `Conference Institutions` is {
@@ -81,7 +79,8 @@ run: IC -> {
     aggregate: # currency
       `Published T&F` is ICAY.CHG1AY3.avg()
       # number="0"
-      `Avg Undergrad Enrollment`
+      `Undergrad Enrollment Total`
+      row_count is count(EF.EFTOTAL)
       # number="0\%"
       `Rentention Rate` is `FT Retention Rate`
       # number="0\%"

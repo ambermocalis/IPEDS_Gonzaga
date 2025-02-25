@@ -20,12 +20,12 @@ source: HD is duckdb.table("./IPEDS/HD2022.csv") extend {
     primary_key: UNITID
 }
 
-source: HDd is duckdb.sql("""
-   SELECT * FROM read_csv('./IPEDS/HD*.csv',
-       union_by_name=true
-    )
- """) extend {
- }
+--source: HDd is duckdb.sql("""
+--   SELECT * FROM read_csv('./IPEDS/HD*.csv',
+--       union_by_name=true
+--    )
+-- """) extend {
+-- }
 
 source: ICAY is duckdb.table("./IPEDS/IC2022_AY.csv") extend {
     primary_key: UNITID
