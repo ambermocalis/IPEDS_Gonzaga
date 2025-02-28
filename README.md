@@ -14,19 +14,15 @@ First, <ins>how do schools in the West Coast Conference (WCC) and the Pac-12 com
 
 ### Option 1: Access GitHub.dev (Web-Based Editor)
 GitHub.dev allows you to edit code directly in your browser without needing to install anything.
-
 ##### **1. Go to the GitHub Repository**  
-   - Open your web browser and navigate to the GitHub repository you want to edit.
-   
+   - Open your web browser and navigate to the GitHub repository you want to edit.  
 ##### **2. Open GitHub.dev**  
    - Press the `.` (period) key on your keyboard while viewing the repository.  
    - Alternatively, change the URL from github.com to github.dev (e.g., `https://github.com/user/repo` → `https://github.dev/user/repo`).
-
 ##### **3. Start Editing**  
    - GitHub.dev will launch a browser-based VS Code editor. 
    - Install the Malloy editor when prompted
    - You can now browse and edit files. Start with **IPEDS Data Analysis.malloynb**
-
 ---
 
 ### Option 2: Clone a GitHub Repository Using GitHub Desktop & Your Code Editor
